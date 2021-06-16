@@ -2,6 +2,7 @@ package com.ssnail.myspringboot.application.user;
 
 import java.util.Date;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * 用户
@@ -22,6 +23,7 @@ public class User {
     /**
      * 密码
      */
+    @Value("${user.passWord}")
     private String passWord;
     /**
      * 创建时间
