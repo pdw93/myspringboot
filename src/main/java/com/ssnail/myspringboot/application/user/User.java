@@ -21,6 +21,10 @@ public class User {
      */
     private String name;
     /**
+     * 性别 1：男；2：女
+     */
+    private Integer sex;
+    /**
      * 密码
      */
     @Value("${user.passWord}")
