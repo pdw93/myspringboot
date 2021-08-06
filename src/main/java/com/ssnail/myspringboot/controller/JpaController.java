@@ -5,6 +5,7 @@ import com.ssnail.myspringboot.controller.vo.Result;
 import com.ssnail.myspringboot.controller.vo.UserVO;
 import com.ssnail.myspringboot.domain.model.user.UserEntity;
 import com.ssnail.myspringboot.domain.model.user.UserEntityRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,20 @@ public class JpaController {
     public Result<UserVO> getUser(Long id) {
         UserEntity userEntity = userEntityRepository.findById(id).orElse(null);
         return Result.success(userVOMapper.fromUserEntity(userEntity));
+    }
+
+    @RequestMapping("/addUser")
+    @ResponseBody
+    public Result<Long> addUser(UserVO userVO) {
+        UserEntity userEntity = userEntityRepository.save(userVOMapper.fromUserVO(userVO));
+        return Result.success(userEntity.getId());
+    }
+
+    @RequestMapping("/findUserByName")
+    @ResponseBody
+    public Result<List<UserVO>> findUserByName(String name) {
+        List<UserEntity> entityList = userEntityRepository.findUserEntityByName(name);
+        return Result.success(userVOMapper.fromUserEntity(entityList));
     }
 
 }
