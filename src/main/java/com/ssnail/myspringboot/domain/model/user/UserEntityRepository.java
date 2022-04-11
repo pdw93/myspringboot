@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserEntityRepository extends JpaRepository<UserEntity, Long> {
     List<UserEntity> findUserEntityByName(String name);
+
+    List<UserEntity> findUserEntityByNameLike(String name);
 }

@@ -119,7 +119,7 @@ public class MyspringbootApplicationTests {
                 User user = new User();
                 user.setId(rs.getLong("id"));
                 user.setName(rs.getString("name"));
-                user.setPassWord(rs.getString("password"));
+                user.setPassword(rs.getString("password"));
                 user.setDateCreate(rs.getDate("date_create"));
                 user.setDateUpdate(rs.getDate("date_update"));
                 return user;

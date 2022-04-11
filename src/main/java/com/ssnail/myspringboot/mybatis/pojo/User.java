@@ -1,15 +1,15 @@
-package com.ssnail.myspringboot.application.user;
+package com.ssnail.myspringboot.mybatis.pojo;
 
-import java.util.Date;
+import com.ssnail.myspringboot.domain.model.enums.SexEnum;
+import java.time.LocalDateTime;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.ibatis.type.Alias;
 
 /**
- * 用户
- *
  * @author pengdengwang
- * @since 2020/4/19
+ * @since 2021/8/7
  */
+@Alias(value = "user")
 @Data
 public class User {
     /**
@@ -21,20 +21,19 @@ public class User {
      */
     private String name;
     /**
-     * 性别 1：男；2：女
+     * 性别
      */
-    private Integer sex;
+    private SexEnum sex;
     /**
      * 密码
      */
-    @Value("${user.passWord}")
     private String password;
     /**
      * 创建时间
      */
-    private Date dateCreate;
+    private LocalDateTime dateCreate;
     /**
      * 修改时间
      */
-    private Date dateUpdate;
+    private LocalDateTime dateUpdate;
 }
